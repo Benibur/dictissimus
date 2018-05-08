@@ -1,0 +1,28 @@
+{
+  "name": "Dictissimus",
+  "slug": "dictissimus",
+  "icon": "icon.svg",
+  "categories": [],
+  "version": "0.1.0",
+  "licence": "AGPL-3.0",
+  "editor": "",
+  "source": "https://github.com/ben/mycozyapp.git@build",
+  "developer": {
+    "name": "ben",
+    "url": ""
+  },
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "permissions": {
+    "apps": {
+      "description": "To be the king of spelling !",
+      "type": "io.cozy.apps",
+      "verbs": ["GET"]
+    }
+  }
+}
