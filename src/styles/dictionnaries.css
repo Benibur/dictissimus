@@ -1,3 +1,16 @@
-.dicoChckBx {
+label.dicoChckBx {
 	margin-bottom: 0;
+}
+
+.dicoChip:hover {
+	border-color: red
+}
+
+.dicoContainer {
+	display: flex
+	flex-direction: column
+	align-items: flex-end
+}
+.dicoTable{
+	flex-grow: 1
 }

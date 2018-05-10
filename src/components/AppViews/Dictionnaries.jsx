@@ -1,31 +1,31 @@
-import React from 'react'
-import Chip from 'cozy-ui/react/Chip'
-import Button from 'cozy-ui/react/Button'
-import Icon from 'cozy-ui/react/Icon'
-import Avatar from 'cozy-ui/react/Avatar'
-import Checkbox from 'cozy-ui/react/Checkbox'
-import Modal from 'cozy-ui/react/Modal'
+import React     from 'react'
+import Chip      from 'cozy-ui/react/Chip'
+import Button    from 'cozy-ui/react/Button'
+import Icon      from 'cozy-ui/react/Icon'
+import Avatar    from 'cozy-ui/react/Avatar'
+import Checkbox  from 'cozy-ui/react/Checkbox'
+import Modal     from 'cozy-ui/react/Modal'
 import DicoTable from './DicoTable'
-import faker from 'faker'
+import faker     from 'faker'
 import "react-virtualized/styles.css";
 
 class DictionnaryChip extends React.Component {
   constructor(props){
     super(props)
-    this.state = {isHoovered:false}
+    // tovered:
+    //false}
   }
   render(){
+    const {dico}=this.props
     return (
       <Chip
-        style={{ paddingLeft: '0.25rem' }}
-        class={this.state.isHoovered ? 'hoovered' : ''}
-        onMouseEnter={()=>{this.state.isHoovered=true; console.log('enter');}}
-        onMouseLeave={()=>{this.state.isHoovered=false}}
+        style={{ paddingLeft : '0.25rem' }}
+        className='dicoChip'
       >
-        <Avatar textId={ this.props.dico.name } text={this.props.dico.initials} size='small' style={{ marginRight: '0.5rem' }}/>
+        <Avatar textId={ dico.name } text={dico.initials} size='small' style={{ marginRight: '0.5rem' }}/>
         <Checkbox label='' className='dicoChckBx' />
-        {this.props.dico.name}
-        <Icon icon='gear' color='grey'/>
+        {dico.name}
+        <Icon icon='gear' color='grey' />
       </Chip>
     );
   }
@@ -50,7 +50,7 @@ export class Dictionnaries extends React.Component {
 
   render() {
     return (
-    <div style="margin-left: 2em">
+    <div className='dicoContainer' style={{"margin": '1.5em'}}>
 
       <label>{'My dictionnaries'}</label>
 
@@ -69,7 +69,7 @@ export class Dictionnaries extends React.Component {
         {'Add new words'}
       </Button>
 
-      <DicoTable list={list}/>
+      <DicoTable className='dicoTable' list={list}/>
 
       {
         this.state.modalDisplayed &&
