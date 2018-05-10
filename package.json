@@ -61,6 +61,7 @@
     "cozy-scripts": "0.6.1",
     "cozy-ui": "7.20.0",
     "eslint-plugin-prettier": "^2.6.0",
+    "moment": "^2.22.1",
     "preact": "8.2.7",
     "preact-compat": "3.18.0",
     "react-redux": "5.0.7",

@@ -10,11 +10,11 @@ import faker     from 'faker'
 import "react-virtualized/styles.css";
 
 class DictionnaryChip extends React.Component {
+
   constructor(props){
     super(props)
-    // tovered:
-    //false}
   }
+
   render(){
     const {dico}=this.props
     return (
@@ -25,36 +25,880 @@ class DictionnaryChip extends React.Component {
         <Avatar textId={ dico.name } text={dico.initials} size='small' style={{ marginRight: '0.5rem' }}/>
         <Checkbox label='' className='dicoChckBx' />
         {dico.name}
-        <Icon icon='gear' color='grey' />
+        <Icon icon='gear' />
       </Chip>
     );
   }
 }
-
-// Table data as an array of objects
-const list = new Array(100).fill(true).map(() => ({
-  ddate: '23/02/1977',
-  word: faker.name.findName(),
-  hints: faker.name.jobTitle(),
-  rules: faker.address.city(),
-  score: '12/30'
-}));
 
 
 export class Dictionnaries extends React.Component {
 
   constructor(props){
     super(props)
+    this.props.selectedDico = [
+      {
+        "word": "un marchand",
+        "word_ok": "marchand",
+        "hint": "une marchandise",
+        "rule": "",
+        "rights": [ "2018-05-10T15:27:09.604Z" ],
+        "wrongs": [],
+        "soundFile": "un marchand.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "le grand-père",
+        "word_ok": "",
+        "hint": "",
+        "rule": "",
+        "rights": [ "2018-05-10T15:29:38.988Z" ],
+        "wrongs": [ "2018-05-10T15:29:28.864Z" ],
+        "soundFile": "le grand-père.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      },
+      {
+        "word": "les parents",
+        "word_ok": "parents",
+        "hint": "un accord parental",
+        "rule": "",
+        "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
+        "wrongs": [],
+        "soundFile": "les parents.wav",
+        "weekDictation": "2018-05-07T02:00:00.000Z"
+      }
+    ]
     this.state = {modalDisplayed: false}
   }
 
   render() {
+    const props = this.props
     return (
-    <div className='dicoContainer' style={{"margin": '1.5em'}}>
+    <div className='dicoContainer'>
 
-      <label>{'My dictionnaries'}</label>
+      <p className='dicoViewTitle'>{'My dictionnaries'}</p>
 
-      <div>
+      <div className='dicoChipsContainer'>
         <DictionnaryChip dico={{ initials: 'FR',  name: 'Dictionnaire français'}} />
         <DictionnaryChip dico={{ initials: 'IT',  name: 'Dictionnaire italien'}} />
         <DictionnaryChip dico={{ initials: 'EN',  name: 'Dictionnaire anglais'}} />
@@ -63,13 +907,7 @@ export class Dictionnaries extends React.Component {
         </Chip>
       </div>
 
-
-      <Button theme='regular' style={{ paddingLeft: '0.25rem' }} onClick={()=>this.setState({ modalDisplayed: !this.state.modalDisplayed })}>
-        <Icon icon='plus' color='white'/>
-        {'Add new words'}
-      </Button>
-
-      <DicoTable className='dicoTable' list={list}/>
+      <DicoTable className='dicoTable' dico={props.selectedDico} />
 
       {
         this.state.modalDisplayed &&
