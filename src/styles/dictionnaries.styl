@@ -1,0 +1,110 @@
+@require 'cozy-ui'
+
+.dicoViewTitle
+	/* margin-bottom: 1em */
+	font-size: 1.5em
+	font-weight: bold
+
+.dicoChipsContainer
+	margin-bottom: 1.5em
+
+.dicoChip
+	color:silver
+	background-color: paleGrey
+	border-style: solid
+	border-width: 2px
+	border-color: paleGrey
+	:first-child
+		// height: 2.27rem;
+		// width: 2.45rem;
+		margin-left: -0.1em;
+
+.dicoChipUnSelected
+	:first-child
+		background-color: silver !important
+	input + span::before
+		background-color: paleGrey
+
+.dicoChipSelected
+	background-color: white !important
+	color:black
+	border-color: silver
+
+.dicoChip:hover
+	color:dodgerBlue
+	border-color: dodgerBlue
+	cursor: pointer
+	input + span::before
+		box-shadow: inset 0 0 0 0.125rem #297ef2;
+		background-color: paleGrey
+
+.dicoChipSelected:hover
+	input:checked + span::before
+		box-shadow: inset 0 0 0 1rem dodgerBlue
+
+label.dicoChckBx
+	margin-bottom: 0
+	input:checked + span::before
+		box-shadow: inset 0 0 0 1rem silver
+
+.dicoChip svg
+	padding-left: 0.3em
+	fill: silver
+
+.dicoChipSelected svg
+	fill:silver
+
+.dicoChip svg:hover
+	fill: dodgerBlue
+
+.dicoContainer
+	display: flex
+	flex-direction: column
+	align-items: flex-start
+	height: 100%
+	padding: 1.5em 0 0 1.5em
+	box-sizing: border-box
+
+
+.dicoTable
+	flex-grow: 1
+	flex-shrink: 1
+	overflow: hidden
+	display:flex
+	flex-direction: column
+	align-items: stretch
+	width: 100%
+	:first-child
+		margin-left: 0;
+		align-self: left;
+
+.dicoTableRow
+	line-height: 2em
+	border-bottom: 1px solid #f6f2f2
+	margin-right: 1em
+
+.dicoTableHeader
+	line-height: 2em
+	color: coolGrey
+	font-weight: bold
+	display: flex
+
+.dicoTableRowsContainer
+	flex-grow: 1
+	flex-shrink: 1
+	overflow: auto
+
+.col_date
+	width:6em
+
+.col_score
+	width:3em
+
+.col_word
+	width:12em
+
+.col_hint
+	width:13em
+
+.col_rule
+	flex-grow: 1

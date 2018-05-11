@@ -6,6 +6,7 @@ import moment from 'moment'
 const TOTAL_WIDTH = 800;
 
 export class DicoTable extends React.Component {
+
   state = {
     widths: {
       ddate: 0.14,
@@ -17,27 +18,26 @@ export class DicoTable extends React.Component {
   };
 
   render() {
-    const { dico } = this.props;
+    const { dico, onAddWordsClick } = this.props;
     const { widths } = this.state;
-    console.log(dico);
-    dico.map
 
     return (
       <div className='dicoTable'>
+        <Button theme='regular' size='tiny' onClick={onAddWordsClick}>
+          <Icon icon='plus' color='white'/>
+          {'Add new words'}
+        </Button>
         <div className='dicoTableHeader'>
           <div style={{display:'inline-block'}} className='col_date'>Date</div>
           <div style={{display:'inline-block'}} className='col_score'>Score</div>
           <div style={{display:'inline-block'}} className='col_word'>Word</div>
           <div style={{display:'inline-block'}} className='col_hint'>Hints</div>
           <div style={{display:'inline-block'}} className='col_rule'>Rules
-            <Button theme='regular' size='tiny' onClick={()=>this.setState({ modalDisplayed: !this.state.modalDisplayed })}>
-              <Icon icon='plus' color='white'/>
-              {'Add new words'}
-            </Button>
           </div>
         </div>
         <div className='dicoTableRowsContainer'>
-          {dico.map((word) =>
+
+          {dico.words.map((word) =>
             <div className='dicoTableRow'>
               <div style={{display:'inline-block'}} className='col_date'>{moment(word.weekDictation).format('DD-MM-YYYY')}</div>
               <div style={{display:'inline-block'}} className='col_score'>12/16</div>
@@ -45,6 +45,7 @@ export class DicoTable extends React.Component {
               <div style={{display:'inline-block'}} className='col_hint'>{word.hint}</div>
               <div style={{display:'inline-block'}} className='col_rule'>{word.rule}</div>
             </div>)}
+
         </div>
       </div>
     );
@@ -63,7 +64,8 @@ export default DicoTable
     https://github.com/bvaughn/react-virtualized/blob/master/docs/AutoSizer.md
 
  */
-// import { div //
+// import faker     from 'faker'
+// import "react-virtualized/styles.css";
 // export class DicoTable extends React.Component {
 //   state = {
 //     widths: {
