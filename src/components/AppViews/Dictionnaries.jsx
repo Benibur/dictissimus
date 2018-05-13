@@ -1,47 +1,77 @@
 import React           from 'react'
+import { Route }       from 'react-router-dom'
 import Chip            from 'cozy-ui/react/Chip'
 import Icon            from 'cozy-ui/react/Icon'
 import Modal           from 'cozy-ui/react/Modal'
 import DictionnaryChip from './DictionnaryChip'
 import DicoTable       from './DicoTable'
+import WordsInputModal from './WordsInputModal'
+
 
 export class Dictionnaries extends React.Component {
+
 
   constructor(props){
     super(props)
     // props
     // { selectedDico } = props
     // state
+    // console.log(props.match);
+    // console.log(props.match.params);
     this.state = {
       modalDisplayed: false,
-      selectedDico:staticDicos[0]
+      selectedDico:staticDicos[0],
+      newWords:[]
     }
     // bindings
-    this.addWordsHandler = this.addWordsHandler.bind(this)
-    this.editDicoParamHandler = this.editDicoParamHandler.bind(this)
-    this.selectDicoHandler = this.selectDicoHandler.bind(this)
+    // this.addWordsHandler = this.addWordsHandler.bind(this)
+    // this.editDicoParamHandler = this.editDicoParamHandler.bind(this)
+    // this.selectDicoHandler = this.selectDicoHandler.bind(this)
   }
 
-  editDicoParamHandler(dico){
+
+  editDicoParamHandler = (dico) => {
     console.log('editDicoParamHandler', dico.name);
-    this.setState({ modalDisplayed: !this.state.modalDisplayed })
+    this.setState({ modalDicoParamDisplayed: !this.state.modalDicoParamDisplayed })
   }
 
-  selectDicoHandler(dico){
+
+  selectDicoHandler = (dico) => {
+    if (dico === this.state.selectedDico) return
     console.log('selectDicoHandler', dico.name);
     this.setState({selectedDico:dico})
-    // this.setState({ modalDisplayed: !this.state.modalDisplayed })
   }
 
-  addWordsHandler(){
+
+  addWordsHandler = () => {
     console.log('addWordsHandler');
-    this.setState({ modalDisplayed: !this.state.modalDisplayed })
+    // history.push('/addWords/dico-id-12345')
+    this.setState({ modalWordsDisplayed: !this.state.modalDisplayed })
   }
+
+
+  onHideWordsModalHandler = () => this.setState({ modalWordsDisplayed: false })
+
+
+  hideModalDicoParam = () => this.setState({ modalDicoParamDisplayed: false })
+
+
+  wordsInputChangeHandler = function (newWords) {
+    this.state.newWords = newWords
+  }
+
 
   render() {
     const props = this.props
     const state = this.state
+    // console.log(props.match.params);
+    // if (props.match.params.modalName === "addWords") {
+    //   const dico = this.getDicoById(props.match.params.dicoId)
+    //
+    // }
     return (
+    // <Route render = ()
+    // https://stackoverflow.com/questions/31079081/programmatically-navigate-using-react-router
     <div className='dicoContainer'>
 
       <p className='dicoViewTitle'>{'My dictionnaries'}</p>
@@ -66,17 +96,42 @@ export class Dictionnaries extends React.Component {
         dico={state.selectedDico} />
 
       {
-        this.state.modalDisplayed &&
-        <Modal
-          title='Add new words to "Dictionnaire français"'
-          description={'Modal description'}
-          dismissAction={() => this.setState({ modalDisplayed: false })}
-          size='xxlarge' // TODO : ne fonctionne pas ?? https://docs.cozy.io/cozy-ui/react/#modal
-          into={'body'}
-        >
-          <h1>contenu html modale</h1>
-        </Modal>
+        this.state.modalWordsDisplayed &&
+          <WordsInputModal
+            onHide={this.onHideWordsModalHandler}
+            />
+      }
+      {
+        // this.state.modalWordsDisplayed &&
+        // <Modal
+        //   title='Add new words to "Dictionnaire français"'
+        //   dismissAction={this.onHideWordsModalHandler}
+        //   size='xxlarge'
+        //   into={'body'}
+        //   primaryText='Add words'
+        //   primaryType='regular'
+        //   primaryAction={this.saveNewWords}
+        //   secondaryText='Cancel'
+        //   secondaryAction={this.onHideWordsModalHandler}
+        //   dismissAction={this.onHideWordsModalHandler}
+        //   overflowHidden={true}
+        // >
+        //   <WordsInputForm
+        //     onChange={this.wordsInputChangeHandler} />
+        // </Modal>
         }
+
+        {
+          this.state.modalDicoParamDisplayed &&
+          <Modal
+            title='"Dictionnaire français" parameters'
+            dismissAction={this.hideModalDicoParam}
+            size='xxlarge'
+            into={'body'}
+          >
+            <h1>contenu html modale dicoParam</h1>
+          </Modal>
+          }
 
     </div>
   )}

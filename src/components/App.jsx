@@ -12,11 +12,16 @@ const App = () => (
       <Sidebar />
       <main className="app-content">
         <Switch>
-          <Route path="/viewScores" component={Scores} />
-          <Route path="/viewDictation" component={Dictation} />
-          <Route path="/viewDictionnaries" component={Dictionnaries} />
-          <Redirect from="/" to="/viewScores" />
-          <Redirect from="*" to="/viewScores" />
+          <Route path     ="/scores"
+                 component={Scores}        />
+          <Route path     ="/dictation"
+                 component={Dictation}     />
+          <Route path     ="/dictionnaries/:modalName(addWords|parameters)/:dicoId"
+                 component={Dictionnaries} />
+          <Route path     ="/dictionnaries"
+                 component={Dictionnaries} />
+          <Redirect from="/" to="/scores" />
+          <Redirect from="*" to="/scores" />
         </Switch>
       </main>
     </div>

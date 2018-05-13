@@ -1,0 +1,27 @@
+.WordsInputForm
+  width: 100%
+  min-width: 10em
+  overflow-x: auto
+  overflow-y: hidden
+
+.WordsInputForm-colsContainer
+  white-space:nowrap
+  > div
+    display: inline-block
+    vertical-align:top
+    width: 13em
+    margin: 2em
+
+  .WordsInputForm-wordCol :first-child
+    font-weight: bold
+
+  .WordsInputForm-wordCol > *
+    width: 13em
+    display: block !important
+    resize: none
+    border-top: none
+    border-left: none
+    border-right: none
+    margin-bottom: 1em
+    &:focus, &:hover
+      border-bottom-color: dodgerblue

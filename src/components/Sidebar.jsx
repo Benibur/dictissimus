@@ -11,7 +11,7 @@ export const Sidebar = ({ t }) => (
 
         <li className="c-nav-item">
           <NavLink
-            to="/viewScores"
+            to="/scores"
             className="c-nav-link"
             activeClassName="is-active"
           >
@@ -22,7 +22,7 @@ export const Sidebar = ({ t }) => (
 
         <li className="c-nav-item">
           <NavLink
-            to="/viewDictation"
+            to="/dictation"
             className="c-nav-link"
             activeClassName="is-active"
           >
@@ -33,7 +33,7 @@ export const Sidebar = ({ t }) => (
 
         <li className="c-nav-item">
           <NavLink
-            to="/viewDictionnaries"
+            to="/dictionnaries"
             className="c-nav-link"
             activeClassName="is-active"
           >

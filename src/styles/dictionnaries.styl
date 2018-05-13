@@ -14,33 +14,41 @@
 	border-style: solid
 	border-width: 2px
 	border-color: paleGrey
+	// transition:color 350ms cubic-bezier(0, 0.89, 0.44, 1)
 	:first-child
 		// height: 2.27rem;
 		// width: 2.45rem;
 		margin-left: -0.1em;
 
 .dicoChipUnSelected
+	cursor: pointer
 	:first-child
 		background-color: silver !important
 	input + span::before
 		background-color: paleGrey
 
+.dicoChipUnSelected:hover
+	cursor: pointer
+	color:dodgerBlue
+	input + span::before
+		box-shadow: inset 0 0 0 0.125rem dodgerBlue
+
+
 .dicoChipSelected
 	background-color: white !important
 	color:black
+	cursor: default
+	// transition:color 350ms cubic-bezier(0, 0.89, 0.44, 1)
 	border-color: silver
+	svg
+		cursor:default
 
 .dicoChip:hover
-	color:dodgerBlue
-	border-color: dodgerBlue
-	cursor: pointer
-	input + span::before
-		box-shadow: inset 0 0 0 0.125rem #297ef2;
-		background-color: paleGrey
+	// border-color: dodgerBlue
 
-.dicoChipSelected:hover
-	input:checked + span::before
-		box-shadow: inset 0 0 0 1rem dodgerBlue
+// .dicoChipSelected:hover
+// 	input:checked + span::before
+// 		box-shadow: inset 0 0 0 1rem dodgerBlue
 
 label.dicoChckBx
 	margin-bottom: 0
@@ -50,6 +58,7 @@ label.dicoChckBx
 .dicoChip svg
 	padding-left: 0.3em
 	fill: silver
+	cursor: pointer
 
 .dicoChipSelected svg
 	fill:silver
