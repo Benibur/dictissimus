@@ -16,8 +16,6 @@ const App = () => (
                  component={Scores}        />
           <Route path     ="/dictation"
                  component={Dictation}     />
-          <Route path     ="/dictionnaries/:modalName(addWords|parameters)/:dicoId"
-                 component={Dictionnaries} />
           <Route path     ="/dictionnaries"
                  component={Dictionnaries} />
           <Redirect from="/" to="/scores" />

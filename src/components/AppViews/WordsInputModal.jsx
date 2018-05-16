@@ -26,7 +26,13 @@ class WordsInputModal extends React.Component {
         hint:'',
         rule:'',
         date:''
-      }]
+      },{
+        word:'',
+        hint:'',
+        rule:'',
+        date:''
+      }],
+      focusedCell:{col:0,row:0}
     }
   }
 
@@ -42,23 +48,45 @@ class WordsInputModal extends React.Component {
   }
 
   updateWordK = (k,word) => {
-    const newWords = this.state.newWords.slice() // TODO : ok ?
+    const newWords = this.state.newWords.slice()
     newWords[k] = word
     this.setState({newWords})
-    console.log('updateWordK', this.state);
+  }
+
+  getRowForFocus = (colNumber) => {
+    const cell = this.state.focusedCell
+    if (cell.col !== colNumber) return undefined
+    console.log('getRowForFocus', colNumber, cell.row)
+    return cell.row
+  }
+
+  moveKeyHandler = (direction) => {
+    console.log('moveKeyHandler', direction);
+    const cell = this.state.focusedCell
+    if (cell.row === 3) {
+      this.setState({focusedCell:{row:0,col:cell.col+1}})
+      return
+    } else {
+      console.log('new state', {row:cell.row+1,col:cell.col});
+      this.setState({focusedCell:{row:cell.row+1,col:cell.col}})
+    }
   }
 
   render() {
     const props = this.props
     const state = this.state
-    this.inputs = new Array(state.newWords.length) // TODO focus sur la 1ère colonne ? un attribut "focusOnRow"
+    // this.inputs = new Array(state.newWords.length)
+    console.log('render modal');
     const columns = state.newWords.map((w,k) => {
-      return <WordsInputColumn
+      console.log('columns array', k);
+      return (<WordsInputColumn
                 wordEntry={w}
                 key={k}
+                k={k}
                 onChanges={this.updateWordK}
-                ref={(input) => { this.inputs[k] = input; }}
-              />
+                focusOnRow={this.getRowForFocus(k)}
+                onMoveKey={this.moveKeyHandler}
+              />)
     })
 
     return (

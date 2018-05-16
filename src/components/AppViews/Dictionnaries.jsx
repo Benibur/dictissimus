@@ -1,11 +1,11 @@
-import React           from 'react'
-import { Route }       from 'react-router-dom'
-import Chip            from 'cozy-ui/react/Chip'
-import Icon            from 'cozy-ui/react/Icon'
-import Modal           from 'cozy-ui/react/Modal'
-import DictionnaryChip from './DictionnaryChip'
-import DicoTable       from './DicoTable'
-import WordsInputModal from './WordsInputModal'
+import React               from 'react'
+import {Route, withRouter} from 'react-router-dom'
+import Chip                from 'cozy-ui/react/Chip'
+import Icon                from 'cozy-ui/react/Icon'
+import Modal               from 'cozy-ui/react/Modal'
+import DictionnaryChip     from './DictionnaryChip'
+import DicoTable           from './DicoTable'
+import WordsInputModal     from './WordsInputModal'
 
 
 export class Dictionnaries extends React.Component {
@@ -20,9 +20,15 @@ export class Dictionnaries extends React.Component {
     // console.log(props.match.params);
     this.state = {
       modalDisplayed: false,
-      selectedDico:staticDicos[0],
-      newWords:[]
+      selectedDico  : staticDicos[0],
+      newWords      : []
     }
+    // path mapping
+    // console.log('Dico constructor', props.match)
+    // if (props.match.params.modalName === "addWords") {
+    //   this.state.selectedDico = this.getDicoById(props.match.params.dicoId)
+    //   this.state.modalDisplayed = true
+    // }
     // bindings
     // this.addWordsHandler = this.addWordsHandler.bind(this)
     // this.editDicoParamHandler = this.editDicoParamHandler.bind(this)
@@ -46,11 +52,15 @@ export class Dictionnaries extends React.Component {
   addWordsHandler = () => {
     console.log('addWordsHandler');
     // history.push('/addWords/dico-id-12345')
-    this.setState({ modalWordsDisplayed: !this.state.modalDisplayed })
+    this.props.history.push('/dictionnaries/addWords/1')
+    // this.setState({ modalWordsDisplayed: !this.state.modalDisplayed })
   }
 
 
-  onHideWordsModalHandler = () => this.setState({ modalWordsDisplayed: false })
+  // onHideWordsModalHandler = () => this.setState({ modalWordsDisplayed: false })
+  onHideWordsModalHandler = () => {
+    this.props.history.push('/dictionnaries')
+  }
 
 
   hideModalDicoParam = () => this.setState({ modalDicoParamDisplayed: false })
@@ -60,18 +70,17 @@ export class Dictionnaries extends React.Component {
     this.state.newWords = newWords
   }
 
+  getDicoById = (dicoId) => {
+    return staticDicos[dicoId]
+  }
 
   render() {
     const props = this.props
     const state = this.state
-    // console.log(props.match.params);
-    // if (props.match.params.modalName === "addWords") {
-    //   const dico = this.getDicoById(props.match.params.dicoId)
-    //
-    // }
     return (
     // <Route render = ()
     // https://stackoverflow.com/questions/31079081/programmatically-navigate-using-react-router
+
     <div className='dicoContainer'>
 
       <p className='dicoViewTitle'>{'My dictionnaries'}</p>
@@ -95,11 +104,19 @@ export class Dictionnaries extends React.Component {
         onAddWordsClick={this.addWordsHandler}
         dico={state.selectedDico} />
 
-      {
-        this.state.modalWordsDisplayed &&
+      <Route
+        path='/dictionnaries/addWords/1'
+        render={() =>
           <WordsInputModal
-            onHide={this.onHideWordsModalHandler}
-            />
+            onHide={this.onHideWordsModalHandler}/>
+        }
+      >
+      </Route>
+      {
+        // this.state.modalWordsDisplayed &&
+        //   <WordsInputModal
+        //     onHide={this.onHideWordsModalHandler}
+        //     />
       }
       {
         // this.state.modalWordsDisplayed &&
@@ -137,7 +154,7 @@ export class Dictionnaries extends React.Component {
   )}
 }
 
-export default Dictionnaries
+export default withRouter(Dictionnaries)
 
 const staticWords = [
   {
@@ -733,7 +750,7 @@ const staticWords = [
   {
     "word": "les parents",
     "word_ok": "parents",
-    "hint": "un accord parental",
+    "hint": "un accord parentallllllllllllll",
     "rule": "",
     "rights": [ "2018-05-10T15:28:26.400Z", "2018-05-10T15:28:55.978Z" ],
     "wrongs": [],

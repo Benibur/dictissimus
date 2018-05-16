@@ -56,9 +56,10 @@
     "stylint": "1.5.9"
   },
   "dependencies": {
+    "combokeys": "^3.0.0",
     "cozy-bar": "4.10.0",
     "cozy-client-js": "0.8.0",
-    "cozy-scripts": "0.6.1",
+    "cozy-scripts": "0.7.1",
     "cozy-ui": "7.20.0",
     "eslint-plugin-prettier": "^2.6.0",
     "moment": "^2.22.1",
