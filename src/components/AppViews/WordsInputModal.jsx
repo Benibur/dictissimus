@@ -10,7 +10,7 @@ class WordsInputModal extends React.Component {
     super(props)
     // props
     const {onChange} = props
-    // dismissAction   // {this.hideWordsModal}
+    // dismissAction   // {this.hideWordsModal} 
     // primaryAction   // {this.saveNewWords}
     // secondaryAction // {this.hideWordsModal}
     // dismissAction   // {this.hideWordsModal}
